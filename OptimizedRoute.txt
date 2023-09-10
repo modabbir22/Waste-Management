@@ -1,0 +1,56 @@
+Optimized Route
+
+
+Name: Location 1
+Distance - 10 km
+WasteLevel - 42%
+
+Name: Location 2
+Distance - 14 km
+WasteLevel - 68%
+
+Name: Location 3
+Distance - 19 km
+WasteLevel - 35%
+
+Name: Location 4
+Distance - 20 km
+WasteLevel - 1%
+
+Name: Location 5
+Distance - 22 km
+WasteLevel - 70%
+
+Name: Location 6
+Distance - 25 km
+WasteLevel - 25%
+
+Name: Location 7
+Distance - 30 km
+WasteLevel - 79%
+
+The optimized mapping route can be given as:
+Location 2 -> Location 5 -> Location 7 ->
+
+The optimized cost can be calculated as:
+
+Name - Location 2
+Time taken - 21 minutes
+Fuel Consumption - RM 21
+Wage - RM 2.0195
+
+Name - Location 5
+Time taken - 33 minutes
+Fuel Consumption - RM 33
+Wage - RM 3.1735
+
+Name - Location 7
+Time taken - 45 minutes
+Fuel Consumption - RM 45
+Wage - RM 4.3275
+
+
+Total cost for the optimized route is given as: RM 108.52
+
+
+Cost saved by taking the optimized route: RM 16.4425

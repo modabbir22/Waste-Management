@@ -1,0 +1,200 @@
+//Waste Management System by Modabbir Adeeb
+#include <iostream>
+using std::string;
+
+// Create class called WasteLocation to save the 7 locations
+class WasteLocation{
+public:
+    string Name; //Name of the Location
+    int Distance; //Distance of the Location
+    int WasteLevel; //Percentage of Waste
+public:
+    void List(){
+        std::cout << "\n" << "Name: " << Name << "\n";
+        std::cout << "Distance - "  << Distance << " km" << "\n";
+        std::cout << "WasteLevel - " << WasteLevel << "%" << "\n";
+    }
+public:
+    WasteLocation(string name, int distance, int wastelevel){ //Creating the constructor
+        Name = name;
+        Distance = distance;
+        WasteLevel = wastelevel;
+    }
+//To create the mapping route for normal route
+public:
+    void Mapping() {
+        if (WasteLevel >= 40)
+        std::cout << Name <<" -> ";
+    }
+// To calculate the cost in terms of time, fuel consumption and wages
+    void Cost() {
+        int x;
+        int sum;
+
+        x = 1.5*Distance;
+        if (WasteLevel >= 40)
+            std::cout << "\n" << "Name - " << Name << "\n";
+        if (WasteLevel >= 40)
+            std::cout  << "Time taken - " << x << " minutes" << "\n";
+        if (WasteLevel >= 40)
+            std::cout << "Fuel Consumption - RM " << x << "\n";
+        if (WasteLevel >= 40)
+        std::cout <<"Wage - RM " << (5.77* x)/60 << "\n";
+
+
+    }
+};
+// Creating the Optimized Route
+// Create class called Optimized Route to create a more efficient route
+
+class OptimizedRoute: public WasteLocation{
+public:
+    OptimizedRoute(string name, int distance, int wastelevel) //Creating constructor for OptimizedRoute
+    : WasteLocation(name,  distance,  wastelevel)
+    {}
+     void List() {
+        std::cout << "\n" << "Name: " << Name << "\n";
+        std::cout << "Distance - " << Distance << " km" << "\n";
+        std::cout << "WasteLevel - " << WasteLevel << "%" << "\n";
+    }
+//To create the mapping for the OptimizedRoute
+public:
+    virtual void OptimizedMapping(){
+        if (WasteLevel >= 60)
+            std::cout << Name <<" -> ";
+    }
+    // To calculate the optimized the cost in terms of time, fuel consumption and wages
+    void OptimizedCost() {
+        int y;
+        int sum;
+
+        y = 1.5 * Distance;
+        if (WasteLevel >= 60)
+            std::cout << "\n" << "Name - " << Name << "\n";
+        if (WasteLevel >= 60)
+            std::cout  << "Time taken - " << y << " minutes" << "\n";
+        if (WasteLevel >= 60)
+            std::cout << "Fuel Consumption - RM " << y << "\n";
+        if (WasteLevel >= 60)
+            std::cout << "Wage - RM " << (5.77 * y) / 60 << "\n";
+
+    }
+};
+int main() {
+    std::cout << "\n" << "Normal Route " << "\n" << "\n";
+    WasteLocation waste1 = WasteLocation("Location 1", 10, rand() % 100 + 1);
+    waste1.List();
+
+    WasteLocation waste2 = WasteLocation("Location 2", 14, rand() % 100 + 1);
+    waste2.List();
+
+    WasteLocation waste3 = WasteLocation("Location 3", 19, rand() % 100 + 1);
+    waste3.List();
+
+    WasteLocation waste4 = WasteLocation("Location 4", 20, rand() % 100 + 1);
+    waste4.List();
+
+    WasteLocation waste5 = WasteLocation("Location 5", 22, rand() % 100 + 1);
+    waste5.List();
+
+    WasteLocation waste6 = WasteLocation("Location 6", 25, rand() % 100 + 1);
+    waste6.List();
+
+    WasteLocation waste7 = WasteLocation("Location 7", 30, rand() % 100 + 1);
+    waste7.List();
+
+    std::cout << "\n" << "The mapping route can be given as:" << "\n";
+    waste1.Mapping();
+    waste2.Mapping();
+    waste3.Mapping();
+    waste4.Mapping();
+    waste5.Mapping();
+    waste6.Mapping();
+    waste7.Mapping();
+
+// To calculate the cost in terms of time, fuel consumption and wages
+
+    waste1.Cost();
+    waste2.Cost();
+    waste3.Cost();
+    waste4.Cost();
+    waste5.Cost();
+    waste6.Cost();
+    waste7.Cost();
+
+
+    //To calculate total cost for the normal route (Fuel consumption + Wages)
+    int sum;
+    sum = waste1.Distance + waste2.Distance  + waste5.Distance + waste7.Distance;
+    std::cout << "\n" << "\n" << "Total cost for the normal route is given as: RM " << (sum*1.5 + sum*0.025*5.77) << "\n";
+
+    // Creating the Optimized Route
+    std::cout << "\n" << "\n" << "Optimized Route " << "\n" << "\n";
+    //Define the class Optimized Route first
+    OptimizedRoute optwaste1 = OptimizedRoute("Location 1", 10, rand() % 100 + 1);
+    optwaste1.WasteLevel = waste1.WasteLevel;
+    optwaste1.List();
+
+    OptimizedRoute optwaste2 = OptimizedRoute("Location 2", 14, rand() % 100 + 1);
+    optwaste2.WasteLevel = waste2.WasteLevel;
+    optwaste2.List();
+
+    OptimizedRoute optwaste3 = OptimizedRoute("Location 3", 19, rand() % 100 + 1);
+    optwaste3.WasteLevel = waste3.WasteLevel;
+    optwaste3.List();
+
+    OptimizedRoute optwaste4 = OptimizedRoute("Location 4", 20, rand() % 100 + 1);
+    optwaste4.WasteLevel = waste4.WasteLevel;
+    optwaste4.List();
+
+    OptimizedRoute optwaste5 = OptimizedRoute("Location 5", 22, rand() % 100 + 1);
+    optwaste5.WasteLevel = waste5.WasteLevel;
+    optwaste5.List();
+
+    OptimizedRoute optwaste6 = OptimizedRoute("Location 6", 25, rand() % 100 + 1);
+    optwaste6.WasteLevel = waste6.WasteLevel;
+    optwaste6.List();
+
+    OptimizedRoute optwaste7 = OptimizedRoute("Location 7", 30, rand() % 100 + 1);
+    optwaste7.WasteLevel = waste7.WasteLevel;
+    optwaste7.List();
+
+
+    std::cout << "\n" << "The optimized mapping route can be given as:" << "\n";
+    optwaste1.OptimizedMapping();
+    optwaste2.OptimizedMapping();
+    optwaste3.OptimizedMapping();
+    optwaste4.OptimizedMapping();
+    optwaste5.OptimizedMapping();
+    optwaste6.OptimizedMapping();
+    optwaste7.OptimizedMapping();
+// To calculate the cost in terms of time, fuel consumption and wages
+
+    std::cout << "\n" << "\n" << "The optimized cost can be calculated as:" << "\n";
+    optwaste1.OptimizedCost();
+    optwaste2.OptimizedCost();
+    optwaste3.OptimizedCost();
+    optwaste4.OptimizedCost();
+    optwaste5.OptimizedCost();
+    optwaste6.OptimizedCost();
+    optwaste7.OptimizedCost();
+
+    //To calculate total optimized cost (Fuel consumption + Wages)
+    int optimized_sum;
+    optimized_sum =  waste2.Distance  + waste5.Distance + waste7.Distance;
+    std::cout << "\n" << "\n" << "Total cost for the optimized route is given as: RM " << (optimized_sum*1.5 + optimized_sum*0.025*5.77) << "\n";
+
+    std::cout << "\n" << "\n" << "Cost saved by taking the optimized route: RM " << ((sum*1.5 + sum*0.025*5.77)- (optimized_sum*1.5 + optimized_sum*0.025*5.77)) << "\n" << "\n";
+
+    //To proceed with the Optimized Route
+    string X;
+    std::cout << "Does the user want to take the optimized route?" ;
+    std::cin >> X;
+    if (X == "Yes")
+        std::cout << "Proceed with the Optimized Route" << "\n";
+     else
+    std::cout << "\n" << "Proceed with the Normal Route" << "\n";
+
+    std::cout << "\n" << "Created by Modabbir Adeeb" << "\n";
+
+}
